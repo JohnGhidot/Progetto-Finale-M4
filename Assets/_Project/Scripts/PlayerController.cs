@@ -55,9 +55,9 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDir = (right * h + forward * v).normalized;
         _rb.velocity = new Vector3(moveDir.x * _Speed, _rb.velocity.y, moveDir.z * _Speed);
 
-        // Ruota il player solo mentre si muove
+
         Quaternion targetRotation = Quaternion.LookRotation(moveDir);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.fixedDeltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 7f * Time.fixedDeltaTime);
     }
 
     private void HandleJump()

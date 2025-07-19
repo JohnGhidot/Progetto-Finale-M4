@@ -1,58 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LifeController : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 100;
-    [SerializeField] private TextMeshProUGUI _healthText;
-    [SerializeField] private Image _healthBarFill;
 
     private int _currentHealth;
-    
-
+    private bool _isDead = false;
 
     void Start()
     {
         _currentHealth = _maxHealth;
-        UpdateUI();
+        UIManager.Instance.UpdateHealth(_currentHealth, _maxHealth);
     }
 
-
-    void Update()
+    public void TakeDamage(int dmg)
     {
-        
-    }
+        if (_isDead) return;
 
-    private void TakeDamage(int dmg)
-    {
         _currentHealth -= dmg;
         _currentHealth = Mathf.Max(_currentHealth, 0);
-        UpdateUI();
+        UIManager.Instance.UpdateHealth(_currentHealth, _maxHealth);
+
+        if (_currentHealth <= 0)
+        {
+            HandleDeath();
+        }
     }
 
-    //public void Heal(int amount)
-    //{
-    //    _currentHealth += amount;
-    //    _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
-    //    UpdateUI();
-    //}
-
-    private void UpdateUI()
+    private void HandleDeath()
     {
-        if (_healthText != null)
-        {
-            _healthText.text = $"HP: {_currentHealth}/{_maxHealth}";
+        _isDead = true;
 
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.isKinematic = true;
         }
 
-        if (_healthBarFill != null)
+        PlayerController controller = GetComponent<PlayerController>();
+        if (controller != null)
         {
-            float fillAmount = (float)_currentHealth / _maxHealth;
-            _healthBarFill.fillAmount = fillAmount;
+            controller.enabled = false;
         }
+
+        UIManager.Instance.ShowGameOver();
     }
-
 }
