@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-
         Vector3 input = new Vector3(h, 0f, v);
 
         if (input.magnitude == 0f)
@@ -53,14 +52,12 @@ public class PlayerController : MonoBehaviour
         right.y = 0f;
         right.Normalize();
 
-        Vector3 direction = (right * h + forward * v).normalized;
+        Vector3 moveDir = (right * h + forward * v).normalized;
+        _rb.velocity = new Vector3(moveDir.x * _Speed, _rb.velocity.y, moveDir.z * _Speed);
 
-        Vector3 velocity = direction * _Speed;
-        velocity.y = _rb.velocity.y;
-        _rb.velocity = velocity;
-
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 6f * Time.fixedDeltaTime);
+        // Ruota il player solo mentre si muove
+        Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.fixedDeltaTime);
     }
 
     private void HandleJump()
