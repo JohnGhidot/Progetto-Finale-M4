@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+
     [SerializeField] private float _totalTime = 120f;
     [SerializeField] private int _coinsToWin = 15;
 
@@ -9,13 +11,22 @@ public class GameManager : MonoBehaviour
     private int _currentCoins = 0;
     private bool _gameEnded = false;
 
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
     void Start()
     {
         _timeRemaining = _totalTime;
-
         UIManager.Instance.SetGoalData(_coinsToWin, _totalTime);
         UIManager.Instance.UpdateTimer(_timeRemaining);
-
     }
 
     void Update()
@@ -24,18 +35,10 @@ public class GameManager : MonoBehaviour
 
         _timeRemaining -= Time.deltaTime;
         _timeRemaining = Mathf.Max(_timeRemaining, 0f);
-
         UIManager.Instance.UpdateTimer(_timeRemaining);
 
         if (_timeRemaining <= 0f)
-        {
             EndGame(false);
-        }
-
-        //if (Input.GetKeyDown(KeyCode.V))
-        //{
-        //    EndGame(true);
-        //}
     }
 
     public void CollectCoin(int amount)
@@ -46,9 +49,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.AddCoins(amount);
 
         if (_currentCoins >= _coinsToWin)
-        {
             EndGame(true);
-        }
     }
 
     private void EndGame(bool won)
@@ -57,12 +58,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
 
         if (won)
-        {
             UIManager.Instance.ShowVictory();
-        }
         else
-        {
             UIManager.Instance.ShowGameOver();
-        }
     }
 }

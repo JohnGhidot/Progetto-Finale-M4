@@ -4,63 +4,52 @@ using UnityEngine;
 
 public class ExplosiveProjectile : MonoBehaviour
 {
-    [SerializeField] private int _damage = 20;
-    [SerializeField] private float _radius = 6f;
+    [SerializeField] private float _explosionRadius = 5f;
+    [SerializeField] private float _explosionForce = 700f;
     [SerializeField] private float _lifeTime = 5f;
-    [SerializeField] private float _explosionForce = 7.5f;
-    [SerializeField] private float _delayOnGround = 1f;
-    [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private int _damage = 20;
 
-    private bool _exploded = false;
+    private float _timer;
 
-    private void Start()
+    private void OnEnable()
     {
-        Destroy(gameObject, _lifeTime);
+        _timer = _lifeTime;
+    }
+
+    private void Update()
+    {
+        _timer -= Time.deltaTime;
+
+        if (_timer <= 0f)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_exploded) return;
-
-        
-        if ((_groundLayer.value & (1 << collision.gameObject.layer)) > 0)
-        {
-            Invoke(nameof(Explode), _delayOnGround);
-        }
-        else
-        {
-            Explode(); 
-        }
+        Explode();
     }
 
     private void Explode()
     {
-        if (_exploded) return;
-        _exploded = true;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadius);
 
-        Collider[] hitables = Physics.OverlapSphere(transform.position, _radius);
-        foreach (Collider hit in hitables)
+        foreach (Collider nearby in colliders)
         {
-            var lifeController = hit.GetComponent<LifeController>();
-            if (lifeController != null)
-            {
-                lifeController.TakeDamage(_damage);
-            }
-
-            var rb = hit.GetComponent<Rigidbody>();
+            Rigidbody rb = nearby.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                Vector3 direction = (hit.transform.position - transform.position).normalized;
-                rb.AddForce(direction * _explosionForce, ForceMode.Impulse);
+                rb.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
+            }
+
+            LifeController health = nearby.GetComponent<LifeController>();
+            if (health != null)
+            {
+                health.TakeDamage(_damage);
             }
         }
 
-        Destroy(gameObject);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _radius);
+        gameObject.SetActive(false);
     }
 }

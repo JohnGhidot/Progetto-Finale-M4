@@ -7,25 +7,37 @@ public class SimpleProjectile : MonoBehaviour
     [SerializeField] private int _damage = 10;
     [SerializeField] private float _lifeTime = 5f;
 
-    private void Start()
+    private float _timer;
+
+    private void OnEnable()
     {
-        Destroy(gameObject, _lifeTime);
+        _timer = _lifeTime;
+    }
+
+    private void Update()
+    {
+        _timer -= Time.deltaTime;
+
+        if (_timer <= 0f)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            LifeController playerHealth = other.GetComponent<LifeController>();
-            if (playerHealth != null)
+            LifeController health = other.GetComponent<LifeController>();
+            if (health != null)
             {
-                playerHealth.TakeDamage(_damage);
+                health.TakeDamage(_damage);
             }
-            Destroy(gameObject);
         }
-        else if (!other.isTrigger)
+
+        if (!other.isTrigger)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

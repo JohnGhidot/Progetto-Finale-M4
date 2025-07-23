@@ -8,9 +8,6 @@ public class TowerController : MonoBehaviour
     private enum ProjectileType { Simple, Explosive }
     [SerializeField] private ProjectileType _type = ProjectileType.Simple;
 
-
-    [SerializeField] private GameObject _simpleProjectilePrefab;
-    [SerializeField] private GameObject _explosiveProjectilePrefab;
     [SerializeField] private float _attackRange = 10f;
     [SerializeField] private float _attackCooldown = 1f;
     [SerializeField] private Transform _firePoint;
@@ -18,19 +15,9 @@ public class TowerController : MonoBehaviour
 
     private float _attackTimer = 1f;
 
-
-    void Start()
-    {
-        
-    }
-
-
     void Update()
     {
-        if (_targetPlayer == null)
-        {
-            return;
-        }
+        if (_targetPlayer == null) return;
 
         float distanceToPlayer = Vector3.Distance(transform.position, _targetPlayer.position);
 
@@ -46,21 +33,12 @@ public class TowerController : MonoBehaviour
     private void FireProjectile()
     {
         Vector3 dir = (_targetPlayer.position - _firePoint.position).normalized;
-        GameObject prefabToUse = null;
 
-        switch (_type)
-        {
-            case ProjectileType.Simple:
-                prefabToUse = _simpleProjectilePrefab;
-                break;
-            case ProjectileType.Explosive:
-                prefabToUse = _explosiveProjectilePrefab;
-                break;
-        }
+        string projectileTag = _type == ProjectileType.Simple ? "SimpleProjectile" : "ExplosiveProjectile";
 
-        if (prefabToUse == null) return;
+        GameObject projectile = PoolManager.Instance.SpawnFromPool(projectileTag, _firePoint.position, Quaternion.LookRotation(dir));
 
-        GameObject projectile = Instantiate(prefabToUse, _firePoint.position, Quaternion.LookRotation(dir));
+        if (projectile == null) return;
 
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)
