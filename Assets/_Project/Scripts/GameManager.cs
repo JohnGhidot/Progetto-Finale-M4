@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private float _totalTime = 120f;
-    [SerializeField] private int _coinsToWin = 20;
+    [SerializeField] private int _coinsToWin = 15;
 
     private float _timeRemaining;
     private int _currentCoins = 0;
@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
 
         //if (Input.GetKeyDown(KeyCode.V))
         //{
-        //    Debug.Log("Test vittoria: V premuto");
         //    EndGame(true);
         //}
     }
