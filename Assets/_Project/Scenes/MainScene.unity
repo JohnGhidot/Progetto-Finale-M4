@@ -11849,6 +11849,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 938109558907733727, guid: 94ae858e7b95aae4d97d3bc05a2826bc,
         type: 3}
+      propertyPath: _targetPlayer
+      value: 
+      objectReference: {fileID: 139126610}
+    - target: {fileID: 938109558907733727, guid: 94ae858e7b95aae4d97d3bc05a2826bc,
+        type: 3}
       propertyPath: _attackCooldown
       value: 0.5
       objectReference: {fileID: 0}

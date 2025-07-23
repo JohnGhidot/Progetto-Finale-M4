@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LifeController : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private int _maxHealth = 130;
 
     private int _currentHealth;
     private bool _isDead = false;
