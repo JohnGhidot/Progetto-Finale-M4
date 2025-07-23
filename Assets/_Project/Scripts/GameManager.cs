@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
         UIManager.Instance.SetGoalData(_coinsToWin, _totalTime);
         UIManager.Instance.UpdateTimer(_timeRemaining);
+
     }
 
     void Update()
@@ -30,6 +31,12 @@ public class GameManager : MonoBehaviour
         {
             EndGame(false);
         }
+
+        //if (Input.GetKeyDown(KeyCode.V))
+        //{
+        //    Debug.Log("Test vittoria: V premuto");
+        //    EndGame(true);
+        //}
     }
 
     public void CollectCoin(int amount)
