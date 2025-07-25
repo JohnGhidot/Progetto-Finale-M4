@@ -12,12 +12,16 @@ public class TowerController : MonoBehaviour
     [SerializeField] private float _attackCooldown = 1f;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Transform _targetPlayer;
+    [SerializeField] private PoolManager _poolManager;
 
     private float _attackTimer = 1f;
 
     void Update()
     {
-        if (_targetPlayer == null) return;
+        if (_targetPlayer == null)
+        {
+            return;
+        }
 
         float distanceToPlayer = Vector3.Distance(transform.position, _targetPlayer.position);
 
@@ -36,15 +40,21 @@ public class TowerController : MonoBehaviour
 
         string projectileTag = _type == ProjectileType.Simple ? "SimpleProjectile" : "ExplosiveProjectile";
 
-        GameObject projectile = PoolManager.Instance.SpawnFromPool(projectileTag, _firePoint.position, Quaternion.LookRotation(dir));
-
-        if (projectile == null) return;
-
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (_poolManager != null)
         {
-            float projectileSpeed = 15f;
-            rb.velocity = dir * projectileSpeed;
+            GameObject projectile = _poolManager.SpawnFromPool(projectileTag, _firePoint.position, Quaternion.LookRotation(dir));
+
+            if (projectile == null)
+            {
+                return;
+            }
+
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                float projectileSpeed = 15f;
+                rb.velocity = dir * projectileSpeed;
+            }
         }
     }
 }

@@ -381,6 +381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1046,6 +1051,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1114,6 +1124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1182,6 +1197,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1726,6 +1746,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1954,6 +1979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 130
+  _uiManager: {fileID: 596265312}
 --- !u!1 &140529493
 GameObject:
   m_ObjectHideFlags: 0
@@ -4386,6 +4412,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 938109558907733727, guid: 94ae858e7b95aae4d97d3bc05a2826bc,
         type: 3}
+      propertyPath: _poolManager
+      value: 
+      objectReference: {fileID: 1153748064}
+    - target: {fileID: 938109558907733727, guid: 94ae858e7b95aae4d97d3bc05a2826bc,
+        type: 3}
       propertyPath: _targetPlayer
       value: 
       objectReference: {fileID: 139126610}
@@ -5912,6 +5943,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6109,6 +6145,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1049986510}
     m_Modifications:
+    - target: {fileID: 938109558907733727, guid: 94ae858e7b95aae4d97d3bc05a2826bc,
+        type: 3}
+      propertyPath: _poolManager
+      value: 
+      objectReference: {fileID: 1153748064}
     - target: {fileID: 938109558907733727, guid: 94ae858e7b95aae4d97d3bc05a2826bc,
         type: 3}
       propertyPath: _targetPlayer
@@ -7540,6 +7581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b31034c2cc6e140964f085a8043adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiManager: {fileID: 596265312}
   _totalTime: 120
   _coinsToWin: 15
 --- !u!4 &824496942
@@ -8402,6 +8444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2425641373945627104, guid: b29a652cacc0a7349b1cc3f7b2745bd1,
         type: 3}
+      propertyPath: _poolManager
+      value: 
+      objectReference: {fileID: 1153748064}
+    - target: {fileID: 2425641373945627104, guid: b29a652cacc0a7349b1cc3f7b2745bd1,
+        type: 3}
       propertyPath: _targetPlayer
       value: 
       objectReference: {fileID: 139126610}
@@ -8981,6 +9028,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10126,6 +10178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2425641373945627104, guid: b29a652cacc0a7349b1cc3f7b2745bd1,
         type: 3}
+      propertyPath: _poolManager
+      value: 
+      objectReference: {fileID: 1153748064}
+    - target: {fileID: 2425641373945627104, guid: b29a652cacc0a7349b1cc3f7b2745bd1,
+        type: 3}
       propertyPath: _targetPlayer
       value: 
       objectReference: {fileID: 139126610}
@@ -10286,6 +10343,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10472,6 +10534,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11064,6 +11131,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2425641373945627104, guid: b29a652cacc0a7349b1cc3f7b2745bd1,
         type: 3}
+      propertyPath: _poolManager
+      value: 
+      objectReference: {fileID: 1153748064}
+    - target: {fileID: 2425641373945627104, guid: b29a652cacc0a7349b1cc3f7b2745bd1,
+        type: 3}
       propertyPath: _targetPlayer
       value: 
       objectReference: {fileID: 139126610}
@@ -11479,6 +11551,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11847,6 +11924,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1049986510}
     m_Modifications:
+    - target: {fileID: 938109558907733727, guid: 94ae858e7b95aae4d97d3bc05a2826bc,
+        type: 3}
+      propertyPath: _poolManager
+      value: 
+      objectReference: {fileID: 1153748064}
     - target: {fileID: 938109558907733727, guid: 94ae858e7b95aae4d97d3bc05a2826bc,
         type: 3}
       propertyPath: _targetPlayer
@@ -12421,6 +12503,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12983,6 +13070,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13051,6 +13143,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13407,6 +13504,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14652,6 +14754,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6167740241425491018, guid: 782aeef868f230c46a93e8ec4b627840,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 824496941}
     - target: {fileID: 6200791240655900627, guid: 782aeef868f230c46a93e8ec4b627840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15097,6 +15204,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1049986510}
     m_Modifications:
+    - target: {fileID: 938109558907733727, guid: 94ae858e7b95aae4d97d3bc05a2826bc,
+        type: 3}
+      propertyPath: _poolManager
+      value: 
+      objectReference: {fileID: 1153748064}
     - target: {fileID: 938109558907733727, guid: 94ae858e7b95aae4d97d3bc05a2826bc,
         type: 3}
       propertyPath: _targetPlayer

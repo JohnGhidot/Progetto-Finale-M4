@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    [SerializeField] private UIManager _uiManager;
 
     [SerializeField] private float _totalTime = 120f;
     [SerializeField] private int _coinsToWin = 15;
@@ -11,45 +11,44 @@ public class GameManager : MonoBehaviour
     private int _currentCoins = 0;
     private bool _gameEnded = false;
 
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
-
-    void Start()
+    private void Start()
     {
         _timeRemaining = _totalTime;
-        UIManager.Instance.SetGoalData(_coinsToWin, _totalTime);
-        UIManager.Instance.UpdateTimer(_timeRemaining);
+        _uiManager.SetGoalData(_coinsToWin, _totalTime);
+        _uiManager.UpdateTimer(_timeRemaining);
     }
 
     void Update()
     {
-        if (_gameEnded) return;
+        if (_gameEnded)
+        {
+            return;
+        }
 
         _timeRemaining -= Time.deltaTime;
         _timeRemaining = Mathf.Max(_timeRemaining, 0f);
-        UIManager.Instance.UpdateTimer(_timeRemaining);
+        _uiManager.UpdateTimer(_timeRemaining);
 
         if (_timeRemaining <= 0f)
+        {
             EndGame(false);
+        }
     }
 
     public void CollectCoin(int amount)
     {
-        if (_gameEnded) return;
+        if (_gameEnded)
+        {
+            return;
+        }
 
         _currentCoins += amount;
-        UIManager.Instance.AddCoins(amount);
+        _uiManager.AddCoins(amount);
 
         if (_currentCoins >= _coinsToWin)
+        {
             EndGame(true);
+        }
     }
 
     private void EndGame(bool won)
@@ -58,8 +57,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
 
         if (won)
-            UIManager.Instance.ShowVictory();
+        {
+            _uiManager.ShowVictory();
+        }
         else
-            UIManager.Instance.ShowGameOver();
+        {
+            _uiManager.ShowGameOver();
+        }
     }
 }

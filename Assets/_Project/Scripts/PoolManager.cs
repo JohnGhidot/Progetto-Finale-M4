@@ -11,15 +11,11 @@ public class PoolManager : MonoBehaviour
         public int size;
     }
 
-    public static PoolManager Instance;
-
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         foreach (Pool pool in pools)
@@ -41,7 +37,6 @@ public class PoolManager : MonoBehaviour
     {
         if (!poolDictionary.ContainsKey(tag))
         {
-            Debug.LogWarning($"Il pool con tag '{tag}' non esiste!");
             return null;
         }
 

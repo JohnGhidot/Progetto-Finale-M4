@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    [SerializeField] private GameManager _gameManager;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (GameManager.Instance != null)
+            if (_gameManager != null)
             {
-                GameManager.Instance.CollectCoin(1);
+                _gameManager.CollectCoin(1);
             }
             Destroy(gameObject);
         }

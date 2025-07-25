@@ -3,6 +3,7 @@ using UnityEngine;
 public class LifeController : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 130;
+    [SerializeField] private UIManager _uiManager;
 
     private int _currentHealth;
     private bool _isDead = false;
@@ -10,16 +11,26 @@ public class LifeController : MonoBehaviour
     void Start()
     {
         _currentHealth = _maxHealth;
-        UIManager.Instance.UpdateHealth(_currentHealth, _maxHealth);
+        if (_uiManager != null)
+        {
+            _uiManager.UpdateHealth(_currentHealth, _maxHealth);
+        }
     }
 
     public void TakeDamage(int dmg)
     {
-        if (_isDead) return;
+        if (_isDead)
+        {
+            return;
+        }
 
         _currentHealth -= dmg;
         _currentHealth = Mathf.Max(_currentHealth, 0);
-        UIManager.Instance.UpdateHealth(_currentHealth, _maxHealth);
+
+        if (_uiManager != null)
+        {
+            _uiManager.UpdateHealth(_currentHealth, _maxHealth);
+        }
 
         if (_currentHealth <= 0)
         {
@@ -44,6 +55,9 @@ public class LifeController : MonoBehaviour
             controller.enabled = false;
         }
 
-        UIManager.Instance.ShowGameOver();
+        if (_uiManager != null)
+        {
+            _uiManager.ShowGameOver();
+        }
     }
 }

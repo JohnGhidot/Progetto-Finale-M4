@@ -25,13 +25,8 @@ public class UIManager : MonoBehaviour
     private int _coinGoal = 0;
     private float _totalTime = 1f;
 
-    public static UIManager Instance { get; private set; }
-
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-
         if (_gameOverPanel != null)
         {
             _gameOverPanel.SetActive(false);
@@ -93,7 +88,14 @@ public class UIManager : MonoBehaviour
 
         if (_coinProgressFill != null)
         {
-            _coinProgressFill.fillAmount = _coinGoal > 0 ? (float)_coinCount / _coinGoal : 0f;
+            if (_coinGoal > 0)
+            {
+                _coinProgressFill.fillAmount = (float)_coinCount / _coinGoal;
+            }
+            else
+            {
+                _coinProgressFill.fillAmount = 0f;
+            }
         }
     }
 
@@ -108,7 +110,14 @@ public class UIManager : MonoBehaviour
 
         if (_timerFill != null)
         {
-            _timerFill.fillAmount = _totalTime > 0f ? timeRemaining / _totalTime : 0f;
+            if (_totalTime > 0f)
+            {
+                _timerFill.fillAmount = timeRemaining / _totalTime;
+            }
+            else
+            {
+                _timerFill.fillAmount = 0f;
+            }
         }
     }
 
